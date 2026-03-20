@@ -1,1 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pieyfah's Portfolio | Professional Coordination</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0f172a;
+      background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .book-container {
+      width: 95%;
+      max-width: 1000px;
+      height: 600px;
+      background: white;
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .page {
+      display: none;
+      width: 100%;
+      height: 100%;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.98) translateX(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+      }
+    }
+
+    .nav-btn {
+      position: absolute;
+      bottom: 2rem;
+      right: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 50;
+    }
+
+    .btn {
+      background: #1e293b;
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover:not(:disabled) {
+      background: #6366f1;
+      transform: translateY(-2px);
+    }
+
+    .btn:disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="book-container">
+    <!-- Page Indicator -->
+    <div class="absolute top-8 left-10 text-slate-300 text-[10px] tracking-[0.3em] uppercase font-black z-10">
+      Navigation <span id="pageNum" class="text-indigo-500 ml-2">01</span> / <span id="totalNum">04</span>
+    </div>
+
+    <!-- PAGE 1: COVER -->
+    <section class="page active flex-col md:flex-row">
+      <div class="w-full md:w-5/12 bg-slate-100">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+          class="w-full h-full object-cover grayscale" alt="Professional Portrait">
+      </div>
+      <div class="w-full md:w-7/12 p-12 md:p-16 flex flex-col justify-center bg-white">
+        <span class="text-indigo-600 font-bold tracking-[0.4em] text-[10px] mb-4 uppercase">Professional
+          Portfolio</span>
+        <h1 class="text-7xl font-extrabold text-slate-900 leading-[0.9] tracking-tighter">PIEYFAH.</h1>
+        <div class="h-1.5 w-16 bg-indigo-600 my-8"></div>
+        <h3 class="text-xl font-semibold text-slate-800 mb-4">Customer Support & Coordination Specialist</h3>
+        <p class="text-slate-400 font-light leading-relaxed max-w-sm italic">
+          "Delivering excellence through organized communication and strategic problem-solving."
+        </p>
+      </div>
+    </section>
+
+    <!-- PAGE 2: ABOUT & WHAT I DO -->
+    <section class="page flex-col p-12 md:p-16 justify-center">
+      <h2 class="text-4xl font-extrabold text-slate-900 mb-8">About <span class="text-indigo-600">Me.</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div>
+          <p class="text-slate-600 text-lg leading-relaxed font-light">
+            I am a detail-oriented professional with a strong background in managing client relations and streamlining
+            operational workflows. I excel at multitasking and ensuring clear communication between cross-functional
+            teams.
+          </p>
+          <div class="mt-8 flex gap-4">
+            <div class="text-center">
+              <p class="text-2xl font-bold text-slate-900">2+</p>
+              <p class="text-[10px] uppercase tracking-widest text-slate-400">Years Exp.</p>
+            </div>
+            <div class="w-[1px] h-10 bg-slate-200"></div>
+            <div class="text-center">
+              <p class="text-2xl font-bold text-slate-900">100%</p>
+              <p class="text-[10px] uppercase tracking-widest text-slate-400">Commitment</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- THE REQUESTED SECTION -->
+        <div class="bg-indigo-50 p-8 rounded-[2rem] border border-indigo-100 shadow-sm">
+          <h4 class="font-bold text-indigo-900 mb-6 uppercase text-xs tracking-[0.2em]">What I Do</h4>
+          <ul class="text-sm text-indigo-700 space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-indigo-400 rounded-full shrink-0"></span>
+              <span><strong>Client Relationship Management:</strong> Ensuring high satisfaction through proactive
+                support and effective de-escalation.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-indigo-400 rounded-full shrink-0"></span>
+              <span><strong>Strategic Coordination:</strong> Managing timelines and resources while acting as a bridge
+                between internal and external stakeholders.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-indigo-400 rounded-full shrink-0"></span>
+              <span><strong>Operations Support:</strong> Optimizing administrative tasks and maintaining meticulous
+                documentation for team efficiency.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3: CORE SKILLS -->
+    <section class="page flex-col p-12 md:p-20">
+      <h2 class="text-4xl font-extrabold text-slate-900 mb-12">Core <span class="text-indigo-600">Competencies.</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div class="space-y-8">
+          <div>
+            <div class="flex justify-between text-[10px] font-black uppercase tracking-widest mb-2 text-slate-400">
+              <span>Interpersonal Communication</span>
+              <span class="text-indigo-600">95%</span>
+            </div>
+            <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-indigo-600 w-[95%]"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[10px] font-black uppercase tracking-widest mb-2 text-slate-400">
+              <span>Organizational Planning</span>
+              <span class="text-indigo-600">90%</span>
+            </div>
+            <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-indigo-600 w-[90%]"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[10px] font-black uppercase tracking-widest mb-2 text-slate-400">
+              <span>Problem Solving</span>
+              <span class="text-indigo-600">88%</span>
+            </div>
+            <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-indigo-600 w-[88%]"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-slate-900 p-8 rounded-3xl text-white">
+          <h4 class="text-indigo-400 font-bold mb-4 uppercase text-[10px] tracking-widest">Technical Tools</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-white/10 rounded-lg text-xs">Microsoft Office</span>
+            <span class="px-3 py-1 bg-white/10 rounded-lg text-xs">CRM Systems</span>
+            <span class="px-3 py-1 bg-white/10 rounded-lg text-xs">Slack & Trello</span>
+            <span class="px-3 py-1 bg-white/10 rounded-lg text-xs">Google Workspace</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4: CONTACT -->
+    <section class="page flex-col items-center justify-center text-center p-16">
+      <h2 class="text-5xl font-extrabold text-slate-900 mb-6 tracking-tighter">Get in Touch.</h2>
+      <p class="text-slate-400 mb-12 max-w-sm font-light">I am ready to bring my dedication and coordination expertise
+        to your team.</p>
+
+      <div class="space-y-6">
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.3em] text-slate-300 font-black block mb-2">Email Address</span>
+          <a href="mailto:pieyfah.work@email.com"
+            class="text-2xl font-bold text-slate-800 hover:text-indigo-600 transition-colors">pieyfah.work@email.com</a>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.3em] text-slate-300 font-black block mb-2">Location</span>
+          <p class="text-lg font-semibold text-slate-600">Bangkok, Thailand</p>
+        </div>
+      </div>
+
+      <button onclick="goToPage(0)"
+        class="mt-16 text-[10px] text-slate-300 font-black uppercase tracking-[0.3em] hover:text-indigo-600 transition-all">←
+        Back to cover</button>
+    </section>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-btn">
+      <button id="prevBtn" onclick="prevPage()" class="btn" disabled>Back</button>
+      <button id="nextBtn" onclick="nextPage()" class="btn">Next</button>
+    </div>
+  </div>
+
+  <script>
+    let currentIdx = 0;
+    const pages = document.querySelectorAll('.page');
+    const total = pages.length;
+    document.getElementById('totalNum').innerText = String(total).padStart(2, '0');
+
+    function updateUI() {
+      pages.forEach((p, i) => p.classList.toggle('active', i === currentIdx));
+      document.getElementById('pageNum').innerText = String(currentIdx + 1).padStart(2, '0');
+      document.getElementById('prevBtn').disabled = (currentIdx === 0);
+      document.getElementById('nextBtn').disabled = (currentIdx === total - 1);
+    }
+
+    function nextPage() { if (currentIdx < total - 1) { currentIdx++; updateUI(); } }
+    function prevPage() { if (currentIdx > 0) { currentIdx--; updateUI(); } }
+    function goToPage(idx) { currentIdx = idx; updateUI(); }
+  </script>
+</body>
+
+</html>
