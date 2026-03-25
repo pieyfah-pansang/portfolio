@@ -32,6 +32,56 @@
             position: relative;
         }
 
+        /* --- MOBILE RESPONSIVE LAYOUT --- */
+        @media (max-width: 768px) {
+            body {
+                overflow: auto; /* ให้ Scroll หน้าจอหลักได้ถ้าเนื้อหายาว */
+                height: auto;
+                padding: 20px 0;
+            }
+            .book-container {
+                flex-direction: column;
+                height: auto;
+                min-height: 85vh;
+                margin-bottom: 20px;
+            }
+            .page {
+                flex-direction: column !important;
+                height: auto !important;
+                padding: 3rem 1.5rem 5rem 1.5rem !important; /* เว้นที่ให้ปุ่มด้านล่าง */
+            }
+            .page.active {
+                display: flex !important;
+            }
+            /* ปรับขนาดตัวอักษรบนมือถือ */
+            h1 { font-size: 4rem !important; }
+            h2 { font-size: 2.5rem !important; }
+            .nav-btn {
+                position: fixed; /* ให้ปุ่มลอยอยู่ด้านล่างเสมอ */
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                justify-content: center;
+                background: rgba(255,255,255,0.8);
+                padding: 10px;
+                border-radius: 50px;
+                backdrop-filter: blur(10px);
+            }
+            .btn {
+                padding: 0.6rem 1.2rem;
+                flex: 1;
+                text-align: center;
+            }
+            /* ปรับสัดส่วนรูปภาพหน้าแรก */
+            .page > div:first-child {
+                width: 100% !important;
+                height: 300px !important;
+            }
+            .page > div:last-child {
+                width: 100% !important;
+            }
+        }
+
         .text-indigo-600 {
             color: #b39e9f !important;
         }
@@ -133,12 +183,10 @@
 <body>
 
     <div class="book-container">
-        <!-- Page Indicator -->
         <div class="absolute top-8 left-10 text-slate-300 text-[10px] tracking-[0.3em] uppercase font-black z-10">
             <span id="pageNum" class="text-indigo-500 ml-2">01</span> / <span id="totalNum">04</span>
         </div>
 
-        <!-- PAGE 1: COVER -->
         <section class="page active flex-col md:flex-row">
             <div class="w-full md:w-5/12 bg-slate-100">
                 <img src="86C34E61-99AE-4C73-89A6-40BFD56019F2.jpg" class="w-full h-full object-cover"
@@ -157,7 +205,6 @@
             </div>
         </section>
 
-        <!-- PAGE 2: ABOUT & WHAT I DO -->
         <section class="page flex-col p-12 md:p-16 justify-center">
             <h2 class="text-4xl font-extrabold text-slate-900 mb-8">About <span class="text-indigo-600">Me.</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -184,7 +231,6 @@
                     </div>
                 </div>
 
-                <!-- THE REQUESTED SECTION -->
                 <div class="bg-indigo-50 p-8 rounded-[2rem] border border-indigo-100 shadow-sm">
                     <h4 class="font-bold text-indigo-900 mb-6 uppercase text-xs tracking-[0.2em]" style="color: black;">
                         MY ACTIVITIES</h4>
@@ -338,7 +384,6 @@
                     </div>
                 </div>
 
-                
                 <div
                     class="group relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500">
                     <div class="aspect-video overflow-hidden">
@@ -386,7 +431,6 @@
             </div>
         </section>
 
-        <!-- PAGE 4: CONTACT -->
         <section class="page flex-col items-center justify-center text-center p-16">
             <h2 class="text-5xl font-extrabold text-slate-900 mb-6 tracking-tighter">Get in Touch.</h2>
             <p class="text-slate-400 mb-12 max-w-sm font-light">I am ready to bring my dedication and coordination
@@ -403,7 +447,7 @@
                 <div>
                     <span
                         class="text-[10px] uppercase tracking-[0.3em] text-slate-300 font-black block mb-2">Tel.</span>
-                    <a href="mailto:0951750527"
+                    <a href="tel:0951750527"
                         class="text-2xl font-bold text-slate-800 hover:text-indigo-600 transition-colors">095-175-0527</a>
                 </div>
                 <div>
@@ -418,7 +462,6 @@
                 Back to Start</button>
         </section>
 
-        <!-- Navigation Buttons -->
         <div class="nav-btn">
             <button id="prevBtn" onclick="prevPage()" class="btn" disabled>Back</button>
             <button id="nextBtn" onclick="nextPage()" class="btn">Next</button>
@@ -436,6 +479,8 @@
             document.getElementById('pageNum').innerText = String(currentIdx + 1).padStart(2, '0');
             document.getElementById('prevBtn').disabled = (currentIdx === 0);
             document.getElementById('nextBtn').disabled = (currentIdx === total - 1);
+            // Scroll to top when page changes (for mobile)
+            window.scrollTo(0, 0);
         }
 
         function nextPage() { if (currentIdx < total - 1) { currentIdx++; updateUI(); } }
