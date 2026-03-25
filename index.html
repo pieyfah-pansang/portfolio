@@ -1,121 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pieyfah's Portfolio | Professional Coordination</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background: #ddd0d1;
             margin: 0;
-            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            padding: 20px;
         }
 
+        /* Container หลัก ปรับตามหน้าจอ */
         .book-container {
-            width: 95%;
+            width: 100%;
             max-width: 1000px;
             height: 600px;
             background: white;
             border-radius: 2.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
             display: flex;
             overflow: hidden;
             position: relative;
         }
 
-        .text-indigo-600 {
-            color: #b39e9f !important;
-        }
-
-        .text-slate-400 {
-            color: #b39e9f !important;
-        }
-
-        .text-indigo-700 {
-            color: black !important;
-        }
-
-        .bg-indigo-400 {
-            background-color: #b39e9f !important;
-        }
-
-        .bg-indigo-50 {
-            background-color: #ddd0d1 !important;
-        }
-
-        .bg-indigo-600 {
-            background-color: #b39e9f !important;
-        }
-
-        .text-indigo-500 {
-            color: black !important;
+        /* จัดการหน้า Mobile */
+        @media (max-width: 768px) {
+            .book-container {
+                height: 85vh;
+                flex-direction: column;
+            }
+            .page {
+                flex-direction: column !important;
+                overflow-y: auto;
+                padding: 1.5rem !important;
+            }
+            .mobile-hide { display: none; }
+            .nav-btn { bottom: 1rem !important; right: 1rem !important; left: 1rem !important; justify-content: space-between; }
         }
 
         .page {
             display: none;
             width: 100%;
             height: 100%;
-            animation: fadeIn 0.6s ease-out forwards;
+            animation: fadeIn 0.5s ease-out forwards;
         }
 
-        .page.active {
-            display: flex;
-        }
-
-        .gap-8 {
-            margin-bottom: 30px;
-        }
-
-        .mb-10 {
-            margin-bottom: 1rem !important;
-        }
-
-        .hover\:text-indigo-600:hover {
-            color: #b39e9f !important;
-        }
+        .page.active { display: flex; }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.98) translateX(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateX(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Navigation Buttons */
         .nav-btn {
             position: absolute;
             bottom: 2rem;
             right: 2.5rem;
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             z-index: 50;
         }
 
         .btn {
             background: #1e293b;
             color: white;
-            padding: 0.8rem 1.8rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 99px;
             font-weight: 700;
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.1em;
             transition: all 0.3s;
             cursor: pointer;
-            border: none;
         }
 
         .btn:hover:not(:disabled) {
@@ -123,349 +88,143 @@
             transform: translateY(-2px);
         }
 
-        .btn:disabled {
-            opacity: 0.2;
-            cursor: not-allowed;
-        }
+        .btn:disabled { opacity: 0.1; cursor: not-allowed; }
+        
+        .accent-text { color: #b39e9f; }
+        .accent-bg { background-color: #b39e9f; }
     </style>
 </head>
-
 <body>
 
     <div class="book-container">
-        <!-- Page Indicator -->
         <div class="absolute top-8 left-10 text-slate-300 text-[10px] tracking-[0.3em] uppercase font-black z-10">
-            <span id="pageNum" class="text-indigo-500 ml-2">01</span> / <span id="totalNum">04</span>
+            <span id="pageNum" class="accent-text">01</span> / <span id="totalNum">04</span>
         </div>
 
-        <!-- PAGE 1: COVER -->
-        <section class="page active flex-col md:flex-row">
+        <section class="page active flex-row">
             <div class="w-full md:w-5/12 bg-slate-100">
-                <img src="86C34E61-99AE-4C73-89A6-40BFD56019F2.jpg" class="w-full h-full object-cover"
-                    alt="Professional Portrait">
+                <img src="86C34E61-99AE-4C73-89A6-40BFD56019F2.jpg" class="w-full h-full object-cover object-top" alt="Portrait">
             </div>
             <div class="w-full md:w-7/12 p-12 md:p-16 flex flex-col justify-center bg-white">
-                <span class="text-indigo-600 font-bold tracking-[0.4em] text-[10px] mb-4 uppercase">Portfolio</span>
-                <h1 class="text-7xl font-extrabold text-slate-900 leading-[0.9] tracking-tighter">PIEYFAH.</h1>
-                <div class="h-1.5 w-16 bg-indigo-600 my-8"></div>
+                <span class="accent-text font-bold tracking-[0.4em] text-[10px] mb-4 uppercase">Portfolio</span>
+                <h1 class="text-6xl md:text-7xl font-extrabold text-slate-900 leading-[0.9] tracking-tighter">PIEYFAH.</h1>
+                <div class="h-1.5 w-16 accent-bg my-8"></div>
                 <h3 class="text-xl font-semibold text-slate-800 mb-4">Customer Support & Coordination Specialist</h3>
                 <p class="text-slate-400 font-light leading-relaxed max-w-sm italic">
-                    "I’m confident in my coordination skills and communication. I handle problems calmly and can work
-                    well under
-                    pressure."
+                    "I’m confident in my coordination skills and communication. I handle problems calmly and work well under pressure."
                 </p>
             </div>
         </section>
 
-        <!-- PAGE 2: ABOUT & WHAT I DO -->
         <section class="page flex-col p-12 md:p-16 justify-center">
-            <h2 class="text-4xl font-extrabold text-slate-900 mb-8">About <span class="text-indigo-600">Me.</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <h2 class="text-4xl font-extrabold text-slate-900 mb-8">About <span class="accent-text">Me.</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
                     <p class="text-slate-600 text-lg leading-relaxed font-light">
-                        I’m an Admin Specialist transitioning into Customer Service and Sales Coordination, with a
-                        passion for
-                        keeping teams aligned and operations running smoothly.<br>I bring strong stakeholder management
-                        skills and a
-                        high level of accuracy in documentation.
+                        I’m an Admin Specialist transitioning into Customer Service and Sales Coordination. 
+                        I bring strong stakeholder management skills and a high level of accuracy in documentation.
                     </p>
-                    <div class="mt-8 flex gap-4">
-                        <div class="text-center">
-                            <p class="text-2xl font-bold text-slate-900" style="color: #b39e9f;">2+</p>
-                            <p class="text-[10px] uppercase tracking-widest text-slate-400"
-                                style="color: black !important;">Years Exp.</p>
+                    <div class="mt-8 flex gap-6">
+                        <div>
+                            <p class="text-2xl font-bold accent-text">2+</p>
+                            <p class="text-[10px] uppercase font-bold text-slate-400">Years Exp.</p>
                         </div>
                         <div class="w-[1px] h-10 bg-slate-200"></div>
-                        <div class="text-center">
-                            <p class="text-2xl font-bold text-slate-900" style="color: #b39e9f;">100%</p>
-                            <p class="text-[10px] uppercase tracking-widest text-slate-400"
-                                style="color: black !important;">Commitment</p>
+                        <div>
+                            <p class="text-2xl font-bold accent-text">100%</p>
+                            <p class="text-[10px] uppercase font-bold text-slate-400">Commitment</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- THE REQUESTED SECTION -->
-                <div class="bg-indigo-50 p-8 rounded-[2rem] border border-indigo-100 shadow-sm">
-                    <h4 class="font-bold text-indigo-900 mb-6 uppercase text-xs tracking-[0.2em]" style="color: black;">
-                        MY ACTIVITIES</h4>
-                    <ul class="text-sm text-indigo-700 space-y-4">
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
+                    <h4 class="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">My Activities</h4>
+                    <ul class="text-sm text-slate-600 space-y-4">
                         <li class="flex items-start gap-3">
-                            <span class="mt-1.5 w-1.5 h-1.5 bg-indigo-400 rounded-full shrink-0"></span>
-                            <span><strong>Client Relationship Management:</strong> Ensuring high satisfaction through
-                                proactive
-                                support and effective de-escalation.</span>
+                            <span class="mt-1.5 w-1.5 h-1.5 accent-bg rounded-full shrink-0"></span>
+                            <span><strong>Client Management:</strong> Proactive support and effective de-escalation.</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="mt-1.5 w-1.5 h-1.5 bg-indigo-400 rounded-full shrink-0"></span>
-                            <span><strong>Strategic Coordination:</strong> Managing timelines and resources while acting
-                                as a bridge
-                                between internal and external stakeholders.</span>
+                            <span class="mt-1.5 w-1.5 h-1.5 accent-bg rounded-full shrink-0"></span>
+                            <span><strong>Strategic Coordination:</strong> Managing timelines between stakeholders.</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="mt-1.5 w-1.5 h-1.5 bg-indigo-400 rounded-full shrink-0"></span>
-                            <span><strong>Operations Support:</strong> Optimizing administrative tasks and maintaining
-                                meticulous
-                                documentation for team efficiency.</span>
+                            <span class="mt-1.5 w-1.5 h-1.5 accent-bg rounded-full shrink-0"></span>
+                            <span><strong>Operations Support:</strong> Optimizing tasks and meticulous documentation.</span>
                         </li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- PAGE 3: CORE SKILLS
-    <section class="page flex-col p-12 md:p-20">
-      <h2 class="text-4xl font-extrabold text-slate-900 mb-12">Core <span class="text-indigo-600">Competencies.</span>
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-        <div class="space-y-8">
-          <div>
-            <div class="flex justify-between text-[10px] font-black uppercase tracking-widest mb-2 text-slate-400">
-              <span>Interpersonal Communication</span>
-              <span class="text-indigo-600">95%</span>
-            </div>
-            <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-indigo-600 w-[95%]"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between text-[10px] font-black uppercase tracking-widest mb-2 text-slate-400">
-              <span>Organizational Planning</span>
-              <span class="text-indigo-600">90%</span>
-            </div>
-            <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-indigo-600 w-[90%]"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between text-[10px] font-black uppercase tracking-widest mb-2 text-slate-400">
-              <span>Problem Solving</span>
-              <span class="text-indigo-600">88%</span>
-            </div>
-            <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-indigo-600 w-[88%]"></div>
-            </div>
-          </div>
-        </div>
-        <div class="bg-slate-900 p-8 rounded-3xl text-white">
-          <h4 class="text-indigo-400 font-bold mb-4 uppercase text-[10px] tracking-widest">Technical Tools</h4>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-white/10 rounded-lg text-xs">Microsoft Office</span>
-            <span class="px-3 py-1 bg-white/10 rounded-lg text-xs">CRM Systems</span>
-            <span class="px-3 py-1 bg-white/10 rounded-lg text-xs">Slack & Trello</span>
-            <span class="px-3 py-1 bg-white/10 rounded-lg text-xs">Google Workspace</span>
-          </div>
-        </div>
-      </div>
-    </section>-->
-
-
         <section class="page flex-col p-12 md:p-16 justify-center">
-            <h2 class="text-4xl font-extrabold text-slate-900 mb-10">Core <span class="text-indigo-600">Skills.</span>
-            </h2>
-
+            <h2 class="text-4xl font-extrabold text-slate-900 mb-10">Core <span class="accent-text">Skills.</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                <div class="space-y-6">
-                    <div class="group p-4 rounded-2xl border border-slate-100 hover:bg-slate-50 transition-all">
-                        <h4 class="text-xs font-black uppercase tracking-widest text-indigo-600 mb-1">Effective Liaison
-                            & Service</h4>
-                        <p class="text-[13px] text-slate-500 font-light leading-relaxed">Acting as a reliable bridge between clients and internal teams to ensure all inquiries are handled with a service-first mindset.</p>
+                <div class="space-y-4">
+                    <div class="p-4 rounded-2xl border border-slate-100 bg-slate-50/50">
+                        <h4 class="text-[10px] font-black uppercase accent-text mb-1">Effective Liaison & Service</h4>
+                        <p class="text-[13px] text-slate-500 font-light leading-snug">Acting as a reliable bridge between clients and teams to ensure inquiries are handled with a service-first mindset.</p>
                     </div>
-
-                    <div class="group p-4 rounded-2xl border border-slate-100 hover:bg-slate-50 transition-all">
-                        <h4 class="text-xs font-black uppercase tracking-widest text-indigo-600 mb-1">Critical Thinking
-                            & Accuracy</h4>
-                        <p class="text-[13px] text-slate-500 font-light leading-relaxed">A calm problem-solver in fast-paced environments, focusing on practical solutions and keeping every document accurate and up to date.</p>
+                    <div class="p-4 rounded-2xl border border-slate-100 bg-slate-50/50">
+                        <h4 class="text-[10px] font-black uppercase accent-text mb-1">Critical Thinking & Accuracy</h4>
+                        <p class="text-[13px] text-slate-500 font-light leading-snug">A calm problem-solver in fast-paced environments, focusing on practical solutions and accurate documentation.</p>
                     </div>
-
-                    <div class="group p-4 rounded-2xl border border-slate-100 hover:bg-slate-50 transition-all">
-                        <h4 class="text-xs font-black uppercase tracking-widest text-indigo-600 mb-1">Workflow &
-                            Timeline Management</h4>
-                        <p class="text-[13px] text-slate-500 font-light leading-relaxed">Skilled in keeping stakeholders on track and managing operational tasks with a focus on meeting deadlines and team alignment.</p>
+                    <div class="p-4 rounded-2xl border border-slate-100 bg-slate-50/50">
+                        <h4 class="text-[10px] font-black uppercase accent-text mb-1">Workflow & Timeline Management</h4>
+                        <p class="text-[13px] text-slate-500 font-light leading-snug">Skilled in keeping stakeholders on track and managing operational tasks with a focus on deadlines and alignment.</p>
                     </div>
                 </div>
 
-                <div
-                    class="bg-slate-900 p-8 rounded-[2.5rem] text-white flex flex-col justify-center relative overflow-hidden">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#b39e9f] opacity-20 blur-[50px]"></div>
-
-                    <h4 class="text-[#b39e9f] font-bold mb-6 uppercase text-[10px] tracking-[0.2em]">Efficiency Toolkit
-                    </h4>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="p-4 bg-white/5 border border-white/10 rounded-2xl">
-                            <p class="text-xs font-bold mb-1">ERP & Procurement</p>
-                            <p class="text-[10px] text-slate-400">SAP (PR/PO Generation), Oracle, or Internal ERP
-                                Systems.</p>
+                <div class="bg-[#f8f6f2] p-8 rounded-[2.5rem] flex flex-col justify-center relative border border-[#ddd0d1]">
+                    <h4 class="accent-text font-bold mb-6 uppercase text-[10px] tracking-[0.2em]">Efficiency Toolkit</h4>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <p class="text-[10px] font-bold text-slate-800">ERP & Procurement</p>
+                            <p class="text-[9px] text-slate-400">SAP (PR/PO), Oracle</p>
                         </div>
-                        <div class="p-4 bg-white/5 border border-white/10 rounded-2xl">
-                            <p class="text-xs font-bold mb-1">Advanced MS Office</p>
-                            <p class="text-[10px] text-slate-400">Excel (VLOOKUP, Pivot Table), Word, PowerPoint.</p>
+                        <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <p class="text-[10px] font-bold text-slate-800">MS Office</p>
+                            <p class="text-[9px] text-slate-400">Excel (Pivot, VLookup)</p>
                         </div>
-                        <div class="p-4 bg-white/5 border border-white/10 rounded-2xl">
-                            <p class="text-xs font-bold mb-1">Collaboration</p>
-                            <p class="text-[10px] text-slate-400">Trello, Slack, Teams</p>
+                        <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <p class="text-[10px] font-bold text-slate-800">Collaboration</p>
+                            <p class="text-[9px] text-slate-400">Trello, Slack, Teams</p>
                         </div>
-                        <div class="p-4 bg-white/5 border border-white/10 rounded-2xl">
-                            <p class="text-xs font-bold mb-1">Digital Workspace</p>
-                            <p class="text-[10px] text-slate-400">ERP, Google Workspace</p>
+                        <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <p class="text-[10px] font-bold text-slate-800">Workspaces</p>
+                            <p class="text-[9px] text-slate-400">Google, Line OA</p>
                         </div>
                     </div>
-
-                    <p class="mt-8 text-[11px] text-slate-400 italic font-light leading-relaxed">
-                        "Maintaining high-precision documentation for seamless business operations and expert in SAP
-                        procurement and office coordination."
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
-
-        <section class="page flex-col p-12 md:p-16 overflow-y-auto">
-            <div class="flex justify-between items-end mb-8">
-                <div>
-                    <h2 class="text-4xl font-extrabold text-slate-900">Work <span
-                            class="text-indigo-600">Experience.</span></h2>
-                    <p class="text-slate-400 text-xs mt-2 uppercase tracking-widest font-bold">Key Projects & Daily
-                        Operations</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div
-                    class="group relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500">
-                    <div class="aspect-video overflow-hidden">
-                        <img src="1.JPG"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Admin & Coordination">
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-slate-800 mb-2">Team Synergy:</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">Collaborating with cross-functional teams to ensure smooth daily operations and a positive workplace environment.</p>
-                    </div>
-                </div>
-
-                <div
-                    class="group relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500">
-                    <div class="aspect-video overflow-hidden">
-                        <img src="2.JPG"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Stakeholder Coordination">
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-slate-800 mb-2">Engagement & Support:</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">Actively supporting team initiatives and internal events to build a strong, connected professional community.</p>
-                    </div>
-                </div>
-
-                <div
-                    class="group relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500">
-                    <div class="aspect-video overflow-hidden">
-                        <img src="3.JPG"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Stakeholder Coordination">
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-slate-800 mb-2">Effective Liaison:</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">Connecting people and departments - making sure everyone has what they need to succeed.</p>
-                    </div>
-                </div>
-
-                <div
-                    class="group relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500">
-                    <div class="aspect-video overflow-hidden">
-                        <img src="4.JPG"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Stakeholder Coordination">
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-slate-800 mb-2">Space Optimization:</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">Managing office facilities and meeting spaces to provide a seamless working experience for all staff.</p>
-                    </div>
-                </div>
-
-                
-                <div
-                    class="group relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500">
-                    <div class="aspect-video overflow-hidden">
-                        <img src="6.JPG"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Stakeholder Coordination">
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-slate-800 mb-2">Operational Readiness:</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">Ensuring the workplace is always ready and fully equipped for high-stakes meetings and daily productivity.</p>
-                    </div>
-                </div>
-
-                <div
-                    class="group relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl transition-all duration-500">
-                    <div class="aspect-video overflow-hidden">
-                        <img src="7.JPG"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            alt="Stakeholder Coordination">
-                    </div>
-                    <div class="p-6">
-                        <h4 class="font-bold text-slate-800 mb-2">Attention to Detail:</h4>
-                        <p class="text-xs text-slate-500 leading-relaxed">Organizing office environments with care—because a well-managed space leads to better work.</p>
-                    </div>
-                </div>                
-            </div>
-
-            <div class="mt-8 p-6 bg-indigo-50 rounded-2xl border border-indigo-100 flex justify-around items-center">
-                <div class="text-center">
-                    <span class="block text-xl font-bold text-slate-800">500+</span>
-                    <span class="text-[9px] uppercase tracking-tighter text-slate-400 font-black">Docs Processed</span>
-                </div>
-                <div class="w-[1px] h-8 bg-indigo-200"></div>
-                <div class="text-center">
-                    <span class="block text-xl font-bold text-slate-800">99%</span>
-                    <span class="text-[9px] uppercase tracking-tighter text-slate-400 font-black">On-time
-                        Coordination</span>
-                </div>
-                <div class="w-[1px] h-8 bg-indigo-200"></div>
-                <div class="text-center">
-                    <span class="block text-xl font-bold text-slate-800">Smooth</span>
-                    <span class="text-[9px] uppercase tracking-tighter text-slate-400 font-black">Workflow
-                        Delivery</span>
+                    <p class="mt-6 text-[10px] text-slate-400 italic font-light">"Ensuring smooth workflows through expert SAP procurement and office coordination."</p>
                 </div>
             </div>
         </section>
 
-        <!-- PAGE 4: CONTACT -->
-        <section class="page flex-col items-center justify-center text-center p-16">
-            <h2 class="text-5xl font-extrabold text-slate-900 mb-6 tracking-tighter">Get in Touch.</h2>
-            <p class="text-slate-400 mb-12 max-w-sm font-light">I am ready to bring my dedication and coordination
-                expertise
-                to your team.</p>
-
-            <div class="space-y-6">
-                <div>
-                    <span class="text-[10px] uppercase tracking-[0.3em] text-slate-300 font-black block mb-2">Email
-                        Address</span>
-                    <a href="mailto:fahpieyfah@gmail.com"
-                        class="text-2xl font-bold text-slate-800 hover:text-indigo-600 transition-colors">fahpieyfah@gmail.com</a>
+        <section class="page flex-col p-8 md:p-12 overflow-y-auto">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Work <span class="accent-text">Experience.</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 shadow-sm">
+                    <img src="1.JPG" class="w-full h-32 object-cover" alt="Work">
+                    <p class="p-3 text-[10px] text-slate-600 font-bold">Team Synergy</p>
                 </div>
-                <div>
-                    <span
-                        class="text-[10px] uppercase tracking-[0.3em] text-slate-300 font-black block mb-2">Tel.</span>
-                    <a href="mailto:0951750527"
-                        class="text-2xl font-bold text-slate-800 hover:text-indigo-600 transition-colors">095-175-0527</a>
+                <div class="rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 shadow-sm">
+                    <img src="2.JPG" class="w-full h-32 object-cover" alt="Work">
+                    <p class="p-3 text-[10px] text-slate-600 font-bold">Liaison Support</p>
                 </div>
-                <div>
-                    <span
-                        class="text-[10px] uppercase tracking-[0.3em] text-slate-300 font-black block mb-2">Location</span>
-                    <p class="text-lg font-semibold text-slate-600">Sutthisan, Bangkok, Thailand</p>
+                <div class="rounded-2xl overflow-hidden border border-slate-100 bg-slate-50 shadow-sm">
+                    <img src="3.JPG" class="w-full h-32 object-cover" alt="Work">
+                    <p class="p-3 text-[10px] text-slate-600 font-bold">Documentation</p>
                 </div>
             </div>
+            
+            <div class="p-6 bg-slate-50 rounded-2xl flex justify-around border border-slate-100">
+                <div class="text-center"><span class="block text-xl font-bold text-slate-800">500+</span><span class="text-[8px] text-slate-400 uppercase font-bold">Docs Processed</span></div>
+                <div class="text-center"><span class="block text-xl font-bold text-slate-800">99%</span><span class="text-[8px] text-slate-400 uppercase font-bold">On-time Delivery</span></div>
+                <div class="text-center"><span class="block text-xl font-bold text-slate-800">Smooth</span><span class="text-[8px] text-slate-400 uppercase font-bold">Coordination</span></div>
+            </div>
 
-            <button onclick="goToPage(0)"
-                class="mt-16 text-[10px] text-slate-300 font-black uppercase tracking-[0.3em] hover:text-indigo-600 transition-all">←
-                Back to Start</button>
+            <button onclick="goToPage(0)" class="mt-8 text-[10px] text-slate-300 font-bold uppercase tracking-widest hover:accent-text transition-all self-center">← Back to Start</button>
         </section>
 
-        <!-- Navigation Buttons -->
         <div class="nav-btn">
             <button id="prevBtn" onclick="prevPage()" class="btn" disabled>Back</button>
             <button id="nextBtn" onclick="nextPage()" class="btn">Next</button>
@@ -490,5 +249,4 @@
         function goToPage(idx) { currentIdx = idx; updateUI(); }
     </script>
 </body>
-
 </html>
